@@ -16,30 +16,17 @@ while nr_letters < nr_symbols + nr_numbers:
     nr_symbols = int(input(f"How many symbols would you like?\n"))
     nr_numbers = int(input(f"How many numbers would you like?\n"))
 
-password = list(range(0, nr_letters))
-
-for each in range(nr_numbers):
-    num_index = random.randint(0, nr_letters - 1)
-    while type(password[num_index]) == "int":
-        num_index = random.randint(0, nr_letters - 1)
-    password[num_index] = "n"
-
-for each in range(nr_symbols):
-    num_index = random.randint(0, nr_letters - 1)
-    while type(password[num_index]) == "int":
-        num_index = random.randint(0, nr_letters - 1)
-    password[num_index] = "s"
 final_pw = ""
-for each in password:
-    if each == "n":
-        index = random.randint(0, len(numbers)-1)
-        each = numbers[index]
-    elif each == "s":
-        index = random.randint(0, len(symbols)-1)
-        each = symbols[index]
-    else:
-        index = random.randint(0, len(letters)-1)
-        each = letters[index]
-    final_pw += each
+
+for _ in range(nr_letters):
+    final_pw += random.choice(letters)
+for _ in range(nr_numbers):
+    final_pw += random.choice(numbers)
+for _ in range(nr_symbols):
+    final_pw += random.choice(symbols)
+
+temp = list(final_pw)
+random.shuffle(temp)
+final_pw = "".join(temp)
 
 print(final_pw)
